@@ -7,7 +7,7 @@ export default function Learning() {
 
             <div className='flex flex-row items-center w-full justify-between md:px-10 bg-zinc-950 text-white p-2 rounded-xl border border-zinc-700 h-24'>
                 <div className='flex flex-row items-center space-x-3 md:space-x-6 '>
-                    <img src="/ganesh.png" alt="college logo" className='w-14 h-14 rounded-full' />
+                    <img src="/100xdevs.png" alt="college logo" className='w-14 h-14 rounded-full' />
                     <div>
                         <p className='font-bold'>100xdevs</p>
                         <p className='text-sm text-zinc-300'>Full stack web development , Devops</p>
@@ -19,7 +19,7 @@ export default function Learning() {
             
             <div className='flex flex-row items-center w-full justify-between md:px-10 bg-zinc-950 text-white p-2 rounded-xl border border-zinc-700 h-24'>
                 <div className='flex flex-row items-center space-x-3 md:space-x-6 '>
-                    <img src="/ganesh.png" alt="college logo" className='w-14 h-14 rounded-full' />
+                    <img src="/bits.png" alt="college logo" className='w-14 h-14 rounded-full' />
                     <div>
                         <p className='font-bold'>BITS Vizag</p>
                         <p className='text-sm text-zinc-300'>Bachelor's degree in Computer science</p>

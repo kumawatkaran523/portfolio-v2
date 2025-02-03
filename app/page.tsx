@@ -3,6 +3,9 @@ import Profile from "./components/Profile";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Learning from "./components/Learning";
+import Projects from "./components/Projects";
+import Workexp from "./components/Workexp";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -11,10 +14,12 @@ export default function Home() {
         <Profile ></Profile>
         <About></About>
         <Skills></Skills>
+        <Projects></Projects>
         <Learning></Learning>
-        
+        <Workexp></Workexp>
+        <Footer></Footer>
       </div>
-      <DotPattern className=''></DotPattern>
+      <DotPattern ></DotPattern>
     </div>
 
   );
