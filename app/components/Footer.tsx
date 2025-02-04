@@ -7,7 +7,7 @@ export default function Footer() {
             <p className='pt-4 text-xs md:text-lg'>Feel free to reach out for hiring, collaboration, or any inquiries. I'm always open to new opportunities and passionate about contributing to meaningful projects. Let's connect and create something amazing together</p>
             <div className='pt-20 text-zinc-600 text-xs'>
                 made with ♥️ by Ganesh <br />
-                © 2025 AI Content Generator. All rights reserved.
+                © 2025 Portfolio Ganesh. All rights reserved.
             </div>
         </div >
     )
