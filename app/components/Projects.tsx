@@ -19,7 +19,7 @@ export default function Projects() {
                 // [...Array(4)].map((_, index) => (
                     <div
                         key={index}
-                        className="w-full rounded-2xl p-4 border flex flex-col justify-between"
+                        className="w-full rounded-2xl bg-black p-4 border flex flex-col justify-between"
                     >
                         <img
                             src={item.image}
