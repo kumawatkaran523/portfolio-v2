@@ -14,7 +14,7 @@ export default function Learning() {
                     </div>
 
                 </div>
-                <p className='text-zinc-600 text-xs sm:text-sm'>2024-2025</p>
+                <p className='text-zinc-400 text-xs sm:text-sm'>2024-Present</p>
             </div>
             
             <div className='flex flex-row items-center w-full justify-between md:px-10 bg-zinc-950 text-white p-2 rounded-xl border border-zinc-700 h-24'>
@@ -26,7 +26,7 @@ export default function Learning() {
                     </div>
 
                 </div>
-                <p className='text-zinc-600 text-xs sm:text-sm'>2020-2024</p>
+                <p className='text-zinc-400 text-xs sm:text-sm'>2020-2024</p>
             </div>
         </div>
     )
