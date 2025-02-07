@@ -38,10 +38,10 @@ export default function Projects() {
                             )}
                         </div>
                         <div className="flex space-x-2 p-2">
-                            <Link href={item.href} className="rounded bg-white px-3 py-1 text-xs text-black flex items-center gap-1">
+                            <Link href={item.href} className="rounded bg-white px-3 py-1 text-xs text-black flex items-center gap-1 hover:bg-zinc-400">
                                 <BiGlobe /> Link
                             </Link>
-                            <Link href={item.repo} className="rounded bg-white px-3 py-1 text-xs text-black flex items-center gap-1">
+                            <Link href={item.repo} className="rounded bg-white px-3 py-1 text-xs text-black flex items-center gap-1 hover:bg-zinc-400">
                                 <BsGithub /> Source
                             </Link>
                         </div>

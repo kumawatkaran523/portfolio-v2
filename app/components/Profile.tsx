@@ -1,3 +1,4 @@
+'use client'
 import { Dock, DockIcon } from '@/components/ui/dock'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,12 +15,6 @@ export default function Profile() {
             <div className='w-80 md:w-auto'>
                 <h2 className='text-2xl font-bold md:text-6xl px-2'>Hi,I'm Ganesh 👋</h2>
                 <p className='text-zinc-300 text-sm md:text-xl p-2'>Aspiring Fullstack dev and Blending Web dev, AI, and open source to build, break, and innovate!</p>
-                {/* <div className='flex gap-6 text-sm p-2 w-60 items-center border-2 border-zinc-700 rounded-lg '>
-                    <p className='p-1 bg-zinc-500 rounded-full'><BsTwitterX></BsTwitterX></p>
-                    <p><BiEnvelope className='text-lg'></BiEnvelope></p>
-                    <p><BsLinkedin></BsLinkedin></p>
-                    <p><BsGithub></BsGithub></p>
-                </div> */}
 
                 <div className="relative " id="contact">
                     <Dock iconMagnification={60} iconDistance={100}>
