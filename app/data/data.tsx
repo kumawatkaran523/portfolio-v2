@@ -59,14 +59,14 @@ export const project_list: projects_d[] = [
         technologies: ['React', 'Tailwind CSS', 'MongoDB', 'JavaScript','Express']
     },
     {
-        name: 'Portfolio Website',
-        href: 'https://tsportfolio-repo.vercel.app/',
-        repo: 'https://github.com/ganeshkondaka/tsportfolio-repo',
-        description: `A personal portfolio showcasing projects, skills, and experiences. 
+        name: 'Github UI Portfolio Website',
+        href: 'https://gttheme.vercel.app/',
+        repo: 'https://github.com/ganeshkondaka/portfolio_GH',
+        description: `A personal portfolio designed like github dashboard UI showcasing projects, skills, and experiences. 
                       Designed with a modern and clean UI using TypeScript and Next.js. 
                       Includes interactive elements and a smooth navigation experience.`,
-        image: '/tsportfolio.png',
-        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS' ,'AceternityUI']
+        image: '/gttheme.png',
+        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS']
     },
     // {
     //     name: 'GitHub Themed Portfolio',
