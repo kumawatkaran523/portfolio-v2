@@ -16,7 +16,7 @@ export const project_list: projects_d[] = [
                       and project name suggestions. Built using Next.js, Tailwind CSS, and 
                       Google Gemini API. Features a sleek dark UI with vibrant gradients.`,
         image: '/aicontent.png',
-        technologies: ['Next.js', 'Tailwind CSS','Prisma-ORM','Postgresql', 'Gemini API', 'TypeScript','Clerk']
+        technologies: ['Next.js', 'Tailwind CSS', 'Prisma-ORM', 'Postgresql', 'Gemini API', 'TypeScript', 'Clerk']
     },
     {
         name: 'Gyan Card',
@@ -26,7 +26,7 @@ export const project_list: projects_d[] = [
                       share, and explore insightful "Gyan Cards." Built with a minimal UI 
                       using React and Tailwind CSS. Supports markdown-based content sharing.`,
         image: '/gyancard.png',
-        technologies: ['React', 'Tailwind CSS', 'TypeScript','Prisma-ORM','Postgresql']
+        technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Prisma-ORM', 'Postgresql']
     },
     {
         name: 'XBlog App',
@@ -36,7 +36,7 @@ export const project_list: projects_d[] = [
                       post creation, and rich text editing. Developed using TypeScript, 
                       Prisma, and a monorepo structure. Optimized for fast content delivery.`,
         image: '/xblogimg.png',
-        technologies: ['Next.js', 'Prisma','Postgresql', 'TypeScript', 'MongoDB','Hono']
+        technologies: ['Next.js', 'Prisma', 'Postgresql', 'TypeScript', 'MongoDB', 'Hono']
     },
     {
         name: 'Chat App',
@@ -46,17 +46,17 @@ export const project_list: projects_d[] = [
                       Supports private and group chats with a responsive UI. Built using 
                       the MERN stack with MongoDB for message storage.`,
         image: '/chatapp.png',
-        technologies: ['React', 'Express.js', 'MongoDB', 'Node.js', 'Socket.io','JWT']
+        technologies: ['React', 'Express.js', 'MongoDB', 'Node.js', 'Socket.io', 'JWT']
     },
     {
         name: 'SocNet',
         href: 'https://socnet-frontend-one.vercel.app/',
         repo: 'https://github.com/ganeshkondaka/mern_chatapp_frontend',
-        description: `A social networking web app with features like user profiles, 
-                      posts, comments, and likes. Developed using Next.js and a custom API. 
-                      Offers a responsive and interactive user experience.`,
+        description: `A simple web app that is used to show all your social media accounts . Easily consolidate
+                        all your social media accounts in one place. Create a profile and share
+                        a single link that connects everyone to all your platforms..`,
         image: 'socnet.png',
-        technologies: ['React', 'Tailwind CSS', 'MongoDB', 'JavaScript','Express']
+        technologies: ['React', 'Tailwind CSS', 'MongoDB', 'JavaScript', 'Express']
     },
     {
         name: 'Github UI Portfolio Website',
