@@ -50,7 +50,7 @@ export default function Profile() {
                 </div>
             </div>
             <div className='w-auto'>
-                <Image src="/ganesh.png" alt="Ganesh" width={150} height={150} className='aspect-square rounded-full ' />
+                <Image src="/dp2.jpg" alt="Ganesh" width={150} height={150} className='aspect-square rounded-full ' />
             </div>
         </div>
     )
