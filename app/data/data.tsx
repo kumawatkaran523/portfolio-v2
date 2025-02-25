@@ -52,7 +52,7 @@ export const project_list: projects_d[] = [
         name: 'SocNet',
         href: 'https://socnet-frontend-one.vercel.app/',
         repo: 'https://github.com/ganeshkondaka/mern_chatapp_frontend',
-        description: `A simple web app that is used to show all your social media accounts . Easily consolidate
+        description: `A simple web app that is used to show all your social media accounts like Linktree . Easily consolidate
                         all your social media accounts in one place. Create a profile and share
                         a single link that connects everyone to all your platforms..`,
         image: 'socnet.png',

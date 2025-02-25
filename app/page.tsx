@@ -6,6 +6,7 @@ import Learning from "./components/Learning";
 import Projects from "./components/Projects";
 import Workexp from "./components/Workexp";
 import Footer from "./components/Footer";
+import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
       <div className="overflow-hidden flex justify-center md:mx-64 items-center">
         <div className="z-10 flex flex-col justify-center items-center">
           <Profile ></Profile>
+          <div className="dark hidden xl:block">
+            <GitHubCalendar username="ganeshkondaka" colorScheme="dark"/>
+          </div>
           <About></About>
           <Skills></Skills>
           <Learning></Learning>

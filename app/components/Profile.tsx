@@ -11,13 +11,13 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export default function Profile() {
     return (
-        <div className='flex flex-row justify-center items-center px-4 py-8 md:py-14 max-w-5xl w-auto'>
+        <div className='flex flex-row justify-center items-center px-4 pt-8 pb-5 xl:pb-4 md:py-14 max-w-5xl w-auto'>
             <div className='w-80 md:w-auto'>
                 <h2 className='text-2xl font-bold md:text-6xl px-2'>Hi,I'm Ganesh 👋</h2>
                 <p className='text-zinc-300 text-sm md:text-xl p-2'>Aspiring Fullstack dev and Blending Web dev, AI, and open source to build, break, and innovate!</p>
 
                 <div className="relative " id="contact">
-                    <Dock iconMagnification={60} iconDistance={100}>
+                    <Dock iconMagnification={60} iconDistance={100} className='border border-zinc-700'>
                         <DockIcon className="bg-black/10 dark:bg-white/10">
                             {/* <Icons.gitHub className="size-full" /> */}
                             <Link className="size-full" href="https://github.com/ganeshkondaka">
