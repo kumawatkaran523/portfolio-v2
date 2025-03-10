@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Skills() {
 
-    const skills_list:string[]=["Typescript","Nextjs","React","Expressjs","Prisma-ORM","TailwindCSS","postgresql","mongoDB","Docker","Javascript","Python","Git","Machine learning","Tensorflow","Pandas","Keras"]
+    const skills_list:string[]=["Nextjs","Typescript","React","Expressjs","Prisma-ORM","TailwindCSS","MongoDB","Nodejs","Docker","Javascript","Python","Git","Machine learning","Tensorflow","Pandas","Keras"]
 
   return (
     <div className='inline px-4 py-2'>
