@@ -36,7 +36,7 @@ export const project_list: projects_d[] = [
                       post creation, and rich text editing. Developed using TypeScript, 
                       Prisma, and a monorepo structure. Optimized for fast content delivery.`,
         image: '/xblogimg.png',
-        technologies: ['Next.js', 'Prisma', 'Postgresql', 'TypeScript', 'MongoDB', 'Hono']
+        technologies: ['Hono', 'Tailwind CSS', 'React.js', 'Prisma', 'Postgresql', 'TypeScript' ]
     },
     {
         name: 'Chat App',
