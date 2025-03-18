@@ -3,7 +3,7 @@ import React from 'react'
 export default function Workexp() {
     return (
         <div className='flex flex-col w-full px-4 py-2 space-y-3'>
-            <h2 className='text-xl font-bold pt-4 '>Work Experience</h2>
+            <h2 className='text-2xl pb-4 font-bold pt-4 '>Work Experience</h2>
             
             <div className='flex flex-row items-center w-full justify-between md:px-10 bg-zinc-950 text-white p-2 rounded-xl border border-zinc-700 h-24'>
                 <div className='flex flex-row items-center space-x-3 md:space-x-6 '>

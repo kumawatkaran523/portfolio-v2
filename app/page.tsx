@@ -17,14 +17,14 @@ export default function Home() {
       <div className="overflow-hidden flex justify-center md:mx-64 items-center">
         <div className="z-10 flex flex-col justify-center items-center">
           <Profile ></Profile>
-          <div className="dark hidden xl:block">
+          {/* <div className="dark hidden xl:block pt-4">
             <GitHubCalendar username="ganeshkondaka" colorScheme="dark"/>
-          </div>
+          </div> */}
           <About></About>
           <Skills></Skills>
           <Learning></Learning>
-          <Projects></Projects>
           <Workexp></Workexp>
+          <Projects></Projects>
           <Footer></Footer>
         </div>
         <DotPattern ></DotPattern>
