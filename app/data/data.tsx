@@ -29,6 +29,17 @@ export const project_list: projects_d[] = [
         technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Prisma-ORM', 'Postgresql']
     },
     {
+        name: 'EventHive',
+        href: 'https://eventhives.netlify.app/',
+        repo: 'https://github.com/ganeshkondaka/EventHive',
+        description: `An intuitive platform designed to display events based on time and location, 
+                    with the ability to seamlessly purchase tickets.Built using Next.js, Tailwind CSS, 
+                    and integrated with payment gateways and location- based APIs.
+                    Features a sleek and user - friendly interface with responsive design.`,
+        image: '/eventhive2.png',
+        technologies: ['Next.js', 'Tailwind CSS', 'MongoDB', 'JWT', 'Payment Gateway', 'TypeScript']
+    },
+    {
         name: 'XBlog App',
         href: 'https://xblog-amber.vercel.app/',
         repo: 'https://github.com/ganeshkondaka/xblog',
@@ -36,7 +47,7 @@ export const project_list: projects_d[] = [
                       post creation, and rich text editing. Developed using TypeScript, 
                       Prisma, and a monorepo structure. Optimized for fast content delivery.`,
         image: '/xblogimg.png',
-        technologies: ['Hono', 'Tailwind CSS', 'React.js', 'Prisma', 'Postgresql', 'TypeScript' ]
+        technologies: ['Hono', 'Tailwind CSS', 'React.js', 'Prisma', 'Postgresql', 'TypeScript']
     },
     {
         name: 'Chat App',
