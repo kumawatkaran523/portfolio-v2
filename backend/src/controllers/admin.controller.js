@@ -91,3 +91,29 @@ export const createAbout = async (req, res) => {
 
 }
 
+export const updateAbout = async (req, res) => {
+  try {
+    const { aboutMe, working, tools, beyond } = req.body;
+    const existing = await prisma.about.findFirst();
+    if (!existing) return res.status(404).json({ message: "About entry not found" });
+    
+    const updated = await prisma.about.update({
+      where: { id: existing.id  },
+      data: {
+        aboutMe,
+        working,
+        tools,
+        beyond,
+      },
+    });
+
+    return res.status(200).json({
+      message: "About section updated successfully",
+      about: updated,
+    });
+  } catch (error) {
+    console.error("Error updating About:", error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
