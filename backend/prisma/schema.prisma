@@ -1,0 +1,21 @@
+// TO RUN LOCALLY USING DOCKER
+// docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+// docker exec -it my-postgres psql -U postgres
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog{
+  id Int @default(autoincrement()) @id
+  title String
+  subTitle String
+  readTime String
+  publishedDate DateTime
+}
