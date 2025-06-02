@@ -12,10 +12,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Blog{
-  id Int @default(autoincrement()) @id
-  title String
-  subTitle String
-  readTime String
-  publishedDate DateTime
+model Blog {
+  id             Int      @id @default(autoincrement())
+  title          String
+  subTitle       String
+  slug           String   @unique
+  thumbnail      String?  // optional image URL
+  content        String   
+  tags           String[] 
+  readTime       String
+  publishedDate  DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
