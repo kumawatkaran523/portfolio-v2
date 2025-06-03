@@ -6,6 +6,7 @@ const router =express.Router();
 router.get('/',getBlogs);
 router.get('/:slug',getBlogBySlug);
 router.post('/createBlog',authMiddleware,createBlog);
-router.delete('/deleteBlog/:id',authMiddleware,deleteBlog);
-router.put("/updateBlog/:slug", authMiddleware, updateBlog);
+router.delete('/:id',authMiddleware,deleteBlog);
+router.put("/:slug", authMiddleware, updateBlog);
+
 export default router;

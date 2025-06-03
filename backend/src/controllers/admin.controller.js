@@ -37,6 +37,22 @@ export const login=async (req,res)=>{
         return res.status(500).json({ message: "Server error" });   
     }
 } 
+export const getAbout = async (req, res) => {
+  try {
+    const about = await prisma.about.findFirst();
+    if (!about) {
+      return res.status(404).json({ message: "About content not found" });
+    }
+
+    res.status(200).json({
+      message: "About content fetched successfully",
+      about
+    });
+  } catch (error) {
+    console.error("Error fetching about:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 
 export const createAbout = async (req, res) => {
   try {
