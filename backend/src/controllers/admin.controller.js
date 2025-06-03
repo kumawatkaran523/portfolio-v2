@@ -1,5 +1,6 @@
 import { prisma } from "../db/prismaClient.js";
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken';
 
 export const login=async (req,res)=>{
     const {username,password}=req.body;
@@ -22,9 +23,14 @@ export const login=async (req,res)=>{
                 message:"Password are incorrect"
             })
         }
-
+        const token = jwt.sign(
+            { id: user.id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
         return res.status(200).json({
-            message:"Login successfully"
+            message:"Login successfully",
+            token
         });
     } catch (error) {
         console.error("Login error:", error);
