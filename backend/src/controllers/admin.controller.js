@@ -38,34 +38,6 @@ export const login=async (req,res)=>{
     }
 } 
 
-export const getBlogs = async (req, res) => {
-  try {
-    const blogs = await prisma.blog.findMany({
-      orderBy: {
-        publishedDate: 'desc', 
-      },
-    });
-
-    if (!blogs || blogs.length === 0) {
-      return res.status(404).json({
-        message: "No blogs published yet",
-        blogs: [],
-      });
-    }
-
-    return res.status(200).json({
-      message: "Blogs fetched successfully",
-      blogs,
-    });
-
-  } catch (error) {
-    console.error("Error fetching blogs:", error);
-    return res.status(500).json({
-      message: "Something went wrong while fetching blogs",
-    });
-  }
-};
-
 export const createAbout = async (req, res) => {
   try {
     const { aboutMe, working, tools, beyond } = req.body;
@@ -124,85 +96,5 @@ export const updateAbout = async (req, res) => {
   }
 };
 
-export const createBlog = async (req, res) => {
-  try {
-    const {
-      title,
-      subTitle,
-      slug,
-      thumbnail,
-      content,
-      tags,
-      articleTree,
-      readTime,
-      publishedDate
-    } = req.body;
 
-    if (!title || !slug || !content || !publishedDate) {
-      return res.status(400).json({ message: "Required fields are missing" });
-    }
 
-    const blog = await prisma.blog.create({
-      data: {
-        title,
-        subTitle,
-        slug,
-        thumbnail,
-        content,
-        tags,
-        articleTree,
-        readTime,
-        publishedDate
-        // createdAt, updatedAt → handled by Prisma
-      },
-    });
-
-    return res.status(201).json({
-      message: "Blog created successfully",
-      blog,
-    });
-  } catch (error) {
-    console.error("Blog Creation Error:", error);
-    return res.status(500).json({ message: "Something went wrong while creating the blog" });
-  }
-};
-
-export const addProject = async (req, res) => {
-  try {
-    const {
-      title,
-      description,
-      techStack,
-      repoLink,
-      liveLink,
-      thumbnail,
-      startDate,
-      endDate
-    } = req.body;
-
-    if (!title || !description || !techStack) {
-      return res.status(400).json({ message: "Title, description, and techStack are required." });
-    }
-
-    const project = await prisma.project.create({
-      data: {
-        title,
-        description,
-        techStack,
-        repoLink,
-        liveLink,
-        thumbnail,
-        startDate,
-        endDate
-      }
-    });
-
-    return res.status(201).json({
-      message: "Project added successfully",
-      project
-    });
-  } catch (error) {
-    console.error("Error adding project:", error);
-    return res.status(500).json({ message: "Something went wrong while adding the project" });
-  }
-};
