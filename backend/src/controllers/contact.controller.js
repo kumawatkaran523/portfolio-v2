@@ -4,9 +4,8 @@ const CONTACT_EMAIL = process.env.MAIL_ID;
 const CONTACT_EMAIL_PASSWORD = process.env.MAIL_PW;
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
     port: 465,
-    secure:true,
+    // secure:true,
     service: "gmail",
     auth: {
         user: CONTACT_EMAIL,
@@ -25,6 +24,7 @@ export const sendmail = async (req, res) => {
     const mailOptions = {
       from: `"${name}" <${email}>`,
       to: CONTACT_EMAIL,
+      replyTo: email,
       subject: `PixelPenguin : New message from ${name}`,
       text: `
 Name: ${name}
