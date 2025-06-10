@@ -11,6 +11,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const metadata = {
+  title: 'pixelpenguin.sh',
+  description: 'Ideas in pixels, stories in code.',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
