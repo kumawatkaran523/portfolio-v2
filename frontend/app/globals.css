@@ -13,7 +13,10 @@
   --color-code: #121212; */
   --font-mplus:var(--font-mplus);
   --font-vt323:var(--font-vt323);
-  --font-princess:var(--font-princess)
+  --font-princess:var(--font-princess);
+  --font-textme:var(--font-textme);
+  --font-libre: var(--font-libre);
+  --font-montaga:var(--font-montaga);
 }
 
 @media (prefers-color-scheme: dark) {
