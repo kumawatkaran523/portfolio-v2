@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ExternalLink, Github, Linkedin,Terminal,Twitter } from 'lucide-react';
 export default function Footer() {
     return (
-        <footer className="py-12 px-4 bg-bottom font-mplus">
+        <footer className="py-12 px-4 bg-bottom font-mono">
             <div className="max-w-7xl mx-auto">
                 {/* Main Footer Content */}
                 <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-40">
@@ -18,8 +18,8 @@ export default function Footer() {
                             />
                         </div>
                         <div>
-                            <h5 className="text-xl mb-2">Karan Kumawat</h5>
-                            <p className="text-gray-500 text-xl">Blockchain Developer • Open-Source Contributor • GSoC'25</p>
+                            <h5 className="text-lg mb-2">Karan Kumawat</h5>
+                            <p className="text-gray-500 text-lg">Blockchain Developer • Open-Source Contributor • GSoC'25</p>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
                                         <li key={link}>
                                             <Link
                                                 href="#"
-                                                className="text-xl text-gray-500 hover:text-primary transition-colors duration-300"
+                                                className="text-lg text-gray-500 hover:text-primary transition-colors duration-300"
                                             >
                                                 {link}
                                             </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
                                         <li key={link}>
                                             <Link
                                                 href="#"
-                                                className="text-xl text-gray-500 hover:text-primary transition-colors duration-300"
+                                                className="text-lg text-gray-500 hover:text-primary transition-colors duration-300"
                                             >
                                                 {link}
                                             </Link>
@@ -61,7 +61,7 @@ export default function Footer() {
                 </div>
                 <div>
                     <div className="flex gap-2">
-                    <Terminal color="#ffffff" strokeWidth={1.75} /> <p className="text-xl">Lets Connect</p>
+                    <Terminal color="#ffffff" strokeWidth={1.75} /> <p className="text-lg">Lets Connect</p>
                     </div>
                     <div className="flex gap-2 my-3">
                         <Linkedin color="#9CA3AF" strokeWidth={1.75} size={28} />
@@ -73,8 +73,8 @@ export default function Footer() {
                 <div className=" ">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="flex items-center ">
-                            <span className="text-4xl mr-1 relative top-1">©</span>
-                            <span className="text-xl">2025 pixelpenguin.sh</span>
+                            <span className="text-2xl mr-1 relative top-1">©</span>
+                            <span className="text-lg">2025 pixelpenguin.sh</span>
                         </p>
                         <p className="text-4xl font-princess text-[#9CA3AF]">
                             deploying dreams on chain
