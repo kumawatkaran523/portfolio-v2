@@ -41,6 +41,11 @@ const libre = Libre_Barcode_128_Text({
 export const metadata: Metadata = {
   title: "PixelPenguin",
   description: "Ideas in pixels, Stories in code",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
