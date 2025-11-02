@@ -1,79 +1,91 @@
+'use client';
 import Link from "next/link";
+import { Calendar, ArrowRight, Clock, Terminal } from "lucide-react";
 
 export default function BlogPostCard() {
     const recentPosts = [
         {
             id: 1,
-            date: "Day 28, 2025",
-            title: "Understanding Smart Contracts in Solidity",
-            excerpt: "Smart contracts are self-executing programs stored on a blockchain that automate the execution of an agreement when predetermined conditions are met...",
-            category: "Blockchain"
+            date: "Oct 28, 2025",
+            readTime: "8 min read",
+            title: "Upgradable Smart Contracts: Ensuring Flexibility in Blockchain",
+            excerpt: "Discover how to implement proxy patterns and upgradable smart contracts in Solidity. Learn about different upgrade strategies and best practices.",
+            category: "Blockchain",
+            tags: ["Solidity", "Web3", "Smart Contracts"]
         },
         {
             id: 2,
-            date: "Day 29, 2025",
-            title: "Understanding Smart Contracts in Solidity",
-            excerpt: "Smart contracts are self-executing programs stored on a blockchain that automate the execution of an agreement when predetermined conditions are met...",
-            category: "Blockchain"
+            date: "Oct 29, 2025",
+            readTime: "6 min read",
+            title: "Building Full-Stack dApps with Next.js and Ethereum",
+            excerpt: "A comprehensive guide to building decentralized applications using Next.js, Web3.js, and smart contracts.",
+            category: "Development",
+            tags: ["Next.js", "Ethereum", "dApps"]
         }
     ];
 
     return (
-        <div className="grid grid-cols-1 gap-8 font-mono">
+        <div className="grid grid-cols-1 gap-6 font-mono">
             {recentPosts.map((post) => (
                 <article
                     key={post.id}
-                    className="relative group border border-gray-700 hover:border-primary/30 rounded-xl overflow-visible  transition-all duration-500 bg-gradient-to-b from-[#0b1111]/50 to-[#0b1111] p-[1px]"
+                    className="group relative bg-gray-900/30 border border-gray-800 rounded-xl p-6 transition-all duration-300 hover:border-primary/40 hover:bg-gray-900/50"
                 >
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-primary/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    {/* Top accent line */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                    {/* Inner content */}
-                    <div className="relative h-full bg-[#0b1111] rounded-[11px] p-5 overflow-visible">
-
-                        {/* Date badge - now centered properly on top border */}
-                        <div className="absolute top-0  left-5 transform -translate-y-1/2 bg-[#0b1111] border border-primary/50 rounded-md px-3 py-[6px] text-xs text-[#9CA3AF] z-30  ">
-                            {post.date}
-                        </div>
-
-                        <div className="pt-4">
-                            <h2 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                                {post.title}
-                            </h2>
-                            <span className="inline-block px-3 py-1 text-xs font-semibold bg-[#01E7FF]/20 text-primary rounded-md mb-4 border border-primary/30 group-hover:bg-primary/30 group-hover:border-primary/50 transition-all duration-300">
-                                #{post.category?.toLowerCase()}
+                    {/* Header - Meta and Category */}
+                    <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-3">
+                            <span className="flex items-center gap-1.5">
+                                <Calendar size={14} />
+                                {post.date}
+                            </span>
+                            <span className="text-gray-700">•</span>
+                            <span className="flex items-center gap-1.5">
+                                <Clock size={14} />
+                                {post.readTime}
                             </span>
                         </div>
+                        <span className="px-2.5 py-1 bg-primary/10 border border-primary/30 text-primary text-xs rounded flex items-center gap-1.5">
+                            <Terminal size={12} />
+                            {post.category}
+                        </span>
+                    </div>
 
-                        <div className="mb-4">
-                            <p className="text-[#9CA3AF] text-base leading-relaxed group-hover:text-[#d1d5db] transition-colors duration-300">
-                                {post.excerpt}
-                            </p>
-                        </div>
+                    {/* Title */}
+                    <h2 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                        {post.title}
+                    </h2>
 
-                        <div className="mt-4">
-                            <Link
-                                href={`/blog/${post.id}`}
-                                className="inline-flex items-center text-primary/80 hover:text-primary transition-colors duration-300 group/readmore"
+                    {/* Excerpt */}
+                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                        {post.excerpt}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="px-2 py-0.5 bg-gray-800/50 border border-gray-700 rounded text-xs text-gray-500"
                             >
-                                <span className="mr-2 group-hover/readmore:mr-3 transition-all duration-300">Read More</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-4 w-4 group-hover/readmore:translate-x-1 transition-transform duration-300"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            </Link>
-                        </div>
+                                #{tag}
+                            </span>
+                        ))}
+                    </div>
+
+                    {/* Read More */}
+                    <div className="flex items-center justify-between pt-3 border-t border-gray-800">
+                        <Link
+                            href={`/blogpost/${post.id}`}
+                            className="flex items-center gap-2 text-primary/80 hover:text-primary transition-colors text-sm"
+                        >
+                            <span>Read Full Article</span>
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
                     </div>
                 </article>
-              
             ))}
         </div>
     );

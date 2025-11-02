@@ -1,10 +1,10 @@
 'use client';
-import { Code, Cpu, Database, Server, BookOpen, Plane, Coffee, Wrench } from "lucide-react";
+import { Code, Cpu, Database, Server, BookOpen, Plane, Coffee, Wrench, Axis3DIcon } from "lucide-react";
 
 export default function About() {
+   
     return (
         <div className="max-w-3xl mx-auto px-4 py-12">
-            {/* Header Section */}
             <header className="mb-12 text-center">
                 <h1 className="font-mono text-3xl font-bold text-primary mb-6">About</h1>
                 <div className="relative inline-block">
@@ -15,12 +15,10 @@ export default function About() {
                 </div>
             </header>
 
-            {/* Main Content */}
             <div className="space-y-16 font-mono">
-                {/* Introduction Section */}
                 <section className="space-y-6">
                     <p className="text-md leading-relaxed">
-                        Hey, I'm Karan — a curious builder, <span className="bg-primary/20 px-1 rounded hover:bg-primary/30 transition-all duration-200">blockchain developer</span>, and <span className="bg-primary/20 px-1 rounded hover:bg-primary/30 transition-all duration-200">open-source contributor</span> who believes in breaking things just enough to understand how they truly work.
+                        Hey, I'm Karan — a curious builder, blockchain developer, and open-source contributor who believes in breaking things just enough to understand how they truly work.
                     </p>
 
                     <p className="text-md leading-relaxed">
@@ -32,7 +30,6 @@ export default function About() {
                     </p>
                 </section>
 
-                {/* Tools Section */}
                 <section className="space-y-8">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
