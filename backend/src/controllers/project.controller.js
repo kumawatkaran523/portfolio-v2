@@ -1,79 +1,151 @@
-import { prisma } from "../db/prismaClient.js";
+import { prisma } from "../config/database.js";
+import { z } from "zod";
 
-export const getAllProjects = async (req, res) => {
+const projectSchema = z.object({
+  title: z.string().min(3).max(255),
+  description: z.string().min(10),
+  techStack: z.array(z.string()),
+  repoLink: z.string().url().optional(),
+  liveLink: z.string().url().optional(),
+  thumbnail: z.string().url().optional(),
+  featured: z.boolean().optional(),
+  startDate: z.string().datetime(),
+  endDate: z.string().datetime().optional(),
+});
+
+// Get all projects
+export const getAllProjects = async (req, res, next) => {
   try {
+    const { featured } = req.query;
+
+    const where = {};
+    if (featured !== undefined) {
+      where.featured = featured === "true";
+    }
+
     const projects = await prisma.project.findMany({
-      orderBy: { startDate: 'desc' }
+      where,
+      orderBy: [{ featured: "desc" }, { startDate: "desc" }],
     });
 
-    res.status(200).json({
-      message: "Projects fetched successfully",
-      projects
+    res.json({
+      success: true,
+      data: projects,
     });
   } catch (error) {
-    console.error("Error fetching projects:", error);
-    res.status(500).json({ message: "Server error" });
+    next(error);
   }
 };
 
-export const addProject = async (req, res) => {
+// Get single project
+export const getProjectById = async (req, res, next) => {
   try {
-    const {
-      title,
-      description,
-      techStack,
-      repoLink,
-      liveLink,
-      thumbnail,
-      startDate,
-      endDate
-    } = req.body;
+    const { id } = req.params;
 
-    if (!title || !description || !techStack) {
-      return res.status(400).json({ message: "Title, description, and techStack are required." });
+    const project = await prisma.project.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!project) {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found",
+      });
     }
+
+    res.json({
+      success: true,
+      data: project,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Add project
+export const addProject = async (req, res, next) => {
+  try {
+    const validatedData = projectSchema.parse(req.body);
 
     const project = await prisma.project.create({
       data: {
-        title,
-        description,
-        techStack,
-        repoLink,
-        liveLink,
-        thumbnail,
-        startDate,
-        endDate
-      }
+        ...validatedData,
+        startDate: new Date(validatedData.startDate),
+        endDate: validatedData.endDate ? new Date(validatedData.endDate) : null,
+      },
     });
 
-    return res.status(201).json({
+    res.status(201).json({
+      success: true,
       message: "Project added successfully",
-      project
+      data: project,
     });
   } catch (error) {
-    console.error("Error adding project:", error);
-    return res.status(500).json({ message: "Something went wrong while adding the project" });
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation error",
+        errors: error.errors,
+      });
+    }
+    next(error);
   }
 };
 
-export const deleteProject = async (req, res) => {
+// Update project
+export const updateProject = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const validatedData = projectSchema.partial().parse(req.body);
+
+    const project = await prisma.project.update({
+      where: { id: parseInt(id) },
+      data: validatedData,
+    });
+
+    res.json({
+      success: true,
+      message: "Project updated successfully",
+      data: project,
+    });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation error",
+        errors: error.errors,
+      });
+    }
+    if (error.code === "P2025") {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found",
+      });
+    }
+    next(error);
+  }
+};
+
+// Delete project
+export const deleteProject = async (req, res, next) => {
   try {
     const { id } = req.params;
 
     await prisma.project.delete({
-      where: { id: Number(id) }
+      where: { id: parseInt(id) },
     });
 
-    res.status(200).json({
-      message: "Project deleted successfully"
+    res.json({
+      success: true,
+      message: "Project deleted successfully",
     });
   } catch (error) {
-    console.error("Error deleting project:", error);
-
-    if (error.code === 'P2025') {
-      return res.status(404).json({ message: "Project not found" });
+    if (error.code === "P2025") {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found",
+      });
     }
-
-    res.status(500).json({ message: "Server error" });
+    next(error);
   }
 };
