@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { M_PLUS_1_Code, VT323, Princess_Sofia, Text_Me_One, Libre_Barcode_128_Text, Montaga } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { useRouter } from "next/router";
+import LayoutClient from "./LayoutClient";
 
 const vt323 = VT323({
   weight:'400',
@@ -58,9 +58,7 @@ export default function RootLayout({
       <body
         className={`${vt323.variable} ${mplus.variable} ${princess.variable} ${textme.variable} ${libre.variable} ${montaga.variable} antialiased`}
       >
-        <Navbar/>
-        {children}
-        <Footer/>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );
