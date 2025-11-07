@@ -1,11 +1,13 @@
 'use client';
 
-import { Mail, Linkedin, Github, Twitter, Coffee } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter, Coffee, Loader, Send } from "lucide-react";
 import { useEffect, useState } from 'react';
 
 export default function ContactPage() {
     const [currentTime, setCurrentTime] = useState(new Date());
-
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [success, setSuccess] = useState(false);
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentTime(new Date());
@@ -13,6 +15,32 @@ export default function ContactPage() {
 
         return () => clearInterval(timer);
     }, []);
+    const handleChange = (e: any) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setSuccess(false), 3000);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-gray-300 px-6 py-16 font-mono">
@@ -49,7 +77,7 @@ export default function ContactPage() {
                             <h3 className="text-gray-400 text-sm mb-2">Find me online</h3>
                             <div className="grid grid-cols-3 gap-4">
                                 <a
-                                    href="https://linkedin.com/in/yourprofile"
+                                    href="https://www.linkedin.com/in/karan-kumawat-26770b24a/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center p-4 border border-gray-800 rounded-lg hover:border-blue-500/50 hover:bg-blue-500/10 transition-colors group"
@@ -58,7 +86,7 @@ export default function ContactPage() {
                                     <span className="text-xs">LinkedIn</span>
                                 </a>
                                 <a
-                                    href="https://github.com/yourusername"
+                                    href="https://github.com/kumawatkaran523/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center p-4 border border-gray-800 rounded-lg hover:border-gray-500/50 hover:bg-gray-500/10 transition-colors group"
@@ -67,7 +95,7 @@ export default function ContactPage() {
                                     <span className="text-xs">GitHub</span>
                                 </a>
                                 <a
-                                    href="https://twitter.com/yourhandle"
+                                    href="https://x.com/KaranKu33693483"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center p-4 border border-gray-800 rounded-lg hover:border-blue-400/50 hover:bg-blue-400/10 transition-colors group"
@@ -118,12 +146,20 @@ export default function ContactPage() {
                     {/* Contact Form */}
                     <div className="border border-gray-800 rounded-lg p-6 bg-[#0b1111]/50 hover:border-gray-700 transition-colors">
                         <h2 className="text-xl font-bold text-white mb-6">Send me a message</h2>
-                        <form className="space-y-4">
+                        {success && (
+                            <div className="mb-4 p-3 bg-green-500/10 border border-green-500/30 text-green-400 rounded-lg text-sm">
+                                ✓ Message sent successfully!
+                            </div>
+                        )}
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block text-sm text-gray-400 mb-2">Name</label>
                                 <input
                                     type="text"
-                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                     className="w-full bg-[#0b1111] border border-gray-800 rounded-md px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors"
                                     placeholder="Your name"
                                 />
@@ -132,7 +168,10 @@ export default function ContactPage() {
                                 <label htmlFor="email" className="block text-sm text-gray-400 mb-2">Email</label>
                                 <input
                                     type="email"
-                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
                                     className="w-full bg-[#0b1111] border border-gray-800 rounded-md px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors"
                                     placeholder="your@email.com"
                                 />
@@ -140,18 +179,31 @@ export default function ContactPage() {
                             <div>
                                 <label htmlFor="message" className="block text-sm text-gray-400 mb-2">Message</label>
                                 <textarea
-                                    id="message"
-                                    rows={8}
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    rows={6}
                                     className="w-full bg-[#0b1111] border border-gray-800 rounded-md px-4 py-2 text-white focus:outline-none focus:border-primary/50 transition-colors resize-none"
                                     placeholder="What would you like to discuss?"
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2"
+                                disabled={loading}
+                                className="w-full bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary py-3 rounded-md font-medium transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                             >
-                                <Mail className="h-4 w-4" />
-                                Send Message
+                                {loading ? (
+                                    <>
+                                        <Loader className="h-4 w-4 animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send className="h-4 w-4" />
+                                        Send Message
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>

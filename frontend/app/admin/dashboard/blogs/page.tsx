@@ -95,7 +95,7 @@ export default function BlogsManagement() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-4">
                     <p className="text-gray-500 text-sm mb-1">Total Blogs</p>
                     <p className="text-2xl font-bold text-primary">{blogs.length}</p>
@@ -103,10 +103,6 @@ export default function BlogsManagement() {
                 <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-4">
                     <p className="text-gray-500 text-sm mb-1">Featured</p>
                     <p className="text-2xl font-bold text-primary">{blogs.filter(b => b.featured).length}</p>
-                </div>
-                <div className="bg-gray-900/30 border border-gray-800 rounded-lg p-4">
-                    <p className="text-gray-500 text-sm mb-1">Total Views</p>
-                    <p className="text-2xl font-bold text-primary">{blogs.reduce((sum, b) => sum + b.views, 0)}</p>
                 </div>
             </div>
 

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, LogOut, Home, BookOpen, FolderOpen, User, Loader } from 'lucide-react';
 
-export default function AdminLayout({ children }) {
+export default function AdminLayout({ children}:any) {
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -41,7 +41,6 @@ export default function AdminLayout({ children }) {
         { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
         { name: 'Blogs', href: '/admin/dashboard/blogs', icon: BookOpen },
         { name: 'Projects', href: '/admin/dashboard/projects', icon: FolderOpen },
-        { name: 'About', href: '/admin/dashboard/about', icon: User },
     ];
 
     return (

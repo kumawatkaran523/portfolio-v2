@@ -84,19 +84,19 @@ export default function Footer() {
                         </h4>
                         <div className="flex gap-4">
                             <a
-                                href="#"
+                                href="https://www.linkedin.com/in/karan-kumawat-26770b24a/"
                                 className="text-gray-400 hover:text-primary transition-all duration-300 p-2 rounded-full hover:bg-primary/10 hover:scale-110"
                             >
                                 <Linkedin className="h-5 w-5" />
                             </a>
                             <a
-                                href="#"
+                                href="https://x.com/KaranKu33693483"
                                 className="text-gray-400 hover:text-primary transition-all duration-300 p-2 rounded-full hover:bg-primary/10 hover:scale-110"
                             >
                                 <Twitter className="h-5 w-5" />
                             </a>
                             <a
-                                href="#"
+                                href="https://github.com/kumawatkaran523/"
                                 className="text-gray-400 hover:text-primary transition-all duration-300 p-2 rounded-full hover:bg-primary/10 hover:scale-110"
                             >
                                 <Github className="h-5 w-5" />
