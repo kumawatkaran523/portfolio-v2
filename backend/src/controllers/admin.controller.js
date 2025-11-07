@@ -1,31 +1,19 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { prisma } from "../config/database.js";
-import { z } from "zod";
+import { prisma } from "../db/prismaClient.js";
 
-// Validation schemas
-const loginSchema = z.object({
-  username: z.string().min(3).max(50),
-  password: z.string().min(6),
-});
-
-const aboutSchema = z.object({
-  aboutMe: z.string().min(10),
-  working: z.array(z.string()),
-  tools: z.record(z.any()),
-  beyond: z.string().min(10),
-  profileImage: z.string().url().optional(),
-  resumeUrl: z.string().url().optional(),
-});
-
-// Login
 export const login = async (req, res, next) => {
   try {
-    const { username, password } = loginSchema.parse(req.body);
+    const { username, password } = req.body;
 
-    const admin = await prisma.admin.findUnique({
-      where: { username },
-    });
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Username and password required",
+      });
+    }
+
+    const admin = await prisma.admin.findUnique({ where: { username } });
 
     if (!admin) {
       return res.status(401).json({
@@ -53,25 +41,13 @@ export const login = async (req, res, next) => {
       success: true,
       message: "Login successful",
       token,
-      admin: {
-        id: admin.id,
-        username: admin.username,
-        email: admin.email,
-      },
+      admin: { id: admin.id, username: admin.username, email: admin.email },
     });
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
-    }
     next(error);
   }
 };
 
-// Get About
 export const getAbout = async (req, res, next) => {
   try {
     const about = await prisma.about.findFirst({
@@ -85,21 +61,17 @@ export const getAbout = async (req, res, next) => {
       });
     }
 
-    res.json({
-      success: true,
-      data: about,
-    });
+    res.json({ success: true, data: about });
   } catch (error) {
     next(error);
   }
 };
 
-// Create About
 export const createAbout = async (req, res, next) => {
   try {
-    const validatedData = aboutSchema.parse(req.body);
+    const { aboutMe, working, tools, beyond, profileImage, resumeUrl } =
+      req.body;
 
-    // Check if about already exists
     const existingAbout = await prisma.about.findFirst();
     if (existingAbout) {
       return res.status(400).json({
@@ -109,7 +81,7 @@ export const createAbout = async (req, res, next) => {
     }
 
     const about = await prisma.about.create({
-      data: validatedData,
+      data: { aboutMe, working, tools, beyond, profileImage, resumeUrl },
     });
 
     res.status(201).json({
@@ -118,21 +90,14 @@ export const createAbout = async (req, res, next) => {
       data: about,
     });
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
-    }
     next(error);
   }
 };
 
-// Update About
 export const updateAbout = async (req, res, next) => {
   try {
-    const validatedData = aboutSchema.parse(req.body);
+    const { aboutMe, working, tools, beyond, profileImage, resumeUrl } =
+      req.body;
 
     const about = await prisma.about.findFirst();
     if (!about) {
@@ -144,7 +109,7 @@ export const updateAbout = async (req, res, next) => {
 
     const updatedAbout = await prisma.about.update({
       where: { id: about.id },
-      data: validatedData,
+      data: { aboutMe, working, tools, beyond, profileImage, resumeUrl },
     });
 
     res.json({
@@ -153,21 +118,20 @@ export const updateAbout = async (req, res, next) => {
       data: updatedAbout,
     });
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
-    }
     next(error);
   }
 };
 
-// Create initial admin (should be run once)
 export const createAdmin = async (req, res, next) => {
   try {
     const { username, password, email } = req.body;
+
+    if (!username || !password || !email) {
+      return res.status(400).json({
+        success: false,
+        message: "Username, password, and email required",
+      });
+    }
 
     const existingAdmin = await prisma.admin.findFirst();
     if (existingAdmin) {
@@ -180,21 +144,13 @@ export const createAdmin = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const admin = await prisma.admin.create({
-      data: {
-        username,
-        passwordHash: hashedPassword,
-        email,
-      },
+      data: { username, passwordHash: hashedPassword, email },
     });
 
     res.status(201).json({
       success: true,
       message: "Admin created successfully",
-      admin: {
-        id: admin.id,
-        username: admin.username,
-        email: admin.email,
-      },
+      admin: { id: admin.id, username: admin.username, email: admin.email },
     });
   } catch (error) {
     next(error);

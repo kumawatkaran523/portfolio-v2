@@ -10,10 +10,19 @@ import {
 
 const router = express.Router();
 
+// Get all projects
 router.get("/", getAllProjects);
-router.get("/:id", getProjectById);
+
+// Add new project (protected)
 router.post("/", authMiddleware, addProject);
+
+// Get single project
+router.get("/:id", getProjectById);
+
+// Update project (protected)
 router.put("/:id", authMiddleware, updateProject);
+
+// Delete project (protected)
 router.delete("/:id", authMiddleware, deleteProject);
 
 export default router;
