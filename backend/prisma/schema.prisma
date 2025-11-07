@@ -19,7 +19,6 @@ model Blog {
   articleTree    String[]
   readTime       String   @db.VarChar(20)
   publishedDate  DateTime
-  views          Int      @default(0)  //need to remove
   featured       Boolean  @default(false)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
@@ -40,20 +39,6 @@ model Admin {
   @@map("admins")
 }
 
-model About {
-  id             Int      @id @default(autoincrement())
-  aboutMe        String   @db.Text
-  working        String[]
-  tools          Json
-  beyond         String   @db.Text
-  profileImage   String?  @db.VarChar(500)
-  resumeUrl      String?  @db.VarChar(500)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  @@map("about")
-}     
-
 model Project {
   id          Int      @id @default(autoincrement())
   title       String   @db.VarChar(255)
@@ -70,16 +55,4 @@ model Project {
 
   @@index([featured])
   @@map("projects")
-}
-
-model Contact {
-  id          Int      @id @default(autoincrement())
-  name        String   @db.VarChar(100)
-  email       String   @db.VarChar(100)
-  message     String   @db.Text
-  isRead      Boolean  @default(false)
-  createdAt   DateTime @default(now())
-
-  @@index([isRead])
-  @@map("contacts")
 }
