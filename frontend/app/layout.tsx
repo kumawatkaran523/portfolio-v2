@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${vt323.variable} ${mplus.variable} ${princess.variable} ${textme.variable} ${libre.variable} ${montaga.variable} antialiased`}
+        className={`${vt323.variable} ${mplus.variable} ${princess.variable} ${textme.variable} ${libre.variable} ${montaga.variable} antialiased grid-background relative`}
       >
         <LayoutClient>{children}</LayoutClient>
       </body>

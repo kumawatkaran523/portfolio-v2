@@ -103,11 +103,8 @@ export default function BlogPostCard({ limit = 100 }: BlogPostCardProps) {
             {posts.map((post) => (
                 <article
                     key={post.id}
-                    className="group relative bg-gray-900/30 border border-gray-800 rounded-xl p-6 transition-all duration-300 hover:border-primary/40 hover:bg-gray-900/50"
+                    className="group relative bg-gray-900/50 border border-gray-800 rounded-xl p-6 transition-all duration-300 hover:border-primary/40 hover:bg-gray-900/50"
                 >
-                    {/* Top accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
                     {/* Header - Meta and Category */}
                     <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
                         <div className="flex items-center gap-3">

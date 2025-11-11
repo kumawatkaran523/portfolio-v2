@@ -39,13 +39,13 @@ export default function Blogs() {
     const hasMore = displayedBlogs < blogCount;
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-gray-300 px-6 py-16 font-mono">
+        <div className="min-h-screen bg-[#0a0a0a] text-gray-300 px-6 py-16 font-mono grid-background relative">
             <div className="max-w-6xl mx-auto">
                 {/* Header Section */}
                 <div className="mb-16">
                     {/* Terminal Breadcrumb */}
-                    <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-                        <Terminal size={14} className="text-primary" />
+                    <div className="flex items-center gap-2 text-xl text-gray-600 mb-6">
+                        <Terminal size={20} className="text-primary" />
                         <span className="text-gray-700">~</span>
                         <span className="text-primary">/blogs</span>
                         <span className="animate-pulse ml-1">▊</span>

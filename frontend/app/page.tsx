@@ -117,6 +117,8 @@ export default function Home() {
                 className="w-32 h-32 object-contain relative z-10 card-3d"
               />
             </div>
+            <div className="font-mono leading-tight text-primary">                  
+            </div>
           </div>
         </section>
 
