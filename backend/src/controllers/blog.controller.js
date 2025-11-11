@@ -60,12 +60,6 @@ export const getBlogBySlug = async (req, res, next) => {
         .status(404)
         .json({ success: false, message: "Blog not found" });
     }
-
-    await prisma.blog.update({
-      where: { slug },
-      data: { views: { increment: 1 } },
-    });
-
     res.json({ success: true, data: blog });
   } catch (error) {
     next(error);
