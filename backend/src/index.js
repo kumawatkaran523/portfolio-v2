@@ -63,7 +63,7 @@ app.use("/api/projects", projectRoute);
 app.use("/api/contact", contactRoute);
 
 // Proper Express 404 fallback
-app.use("*", (req, res) => {
+app.use("/{*any}", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
 
